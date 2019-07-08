@@ -5,7 +5,7 @@ var cors = require('cors');
 const bodyParser= require('body-parser')
 let multer = require('multer');
 
-var upload = multer({ dest: 'assets/' })
+var upload = multer({ dest: 'uploads/' })
 
 
 var app = express();
@@ -28,9 +28,10 @@ app.post('/api/fileanalyse', upload.single('upfile'), function (req, res, next) 
     error.httpStatusCode = 400
     return next(error)
   }
-    res.send(file)
-  console.log(req.body)
-  //console.log(req.file)
+   // res.send(file)
+  console.log(req.file)
+  res.send({name:req.file.originalname,type:req.file. mimetype,size:req.file.size})
+ 
 })
  
 
