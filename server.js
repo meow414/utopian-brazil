@@ -20,7 +20,7 @@ app.get('/', function (req, res) {
   });
 
 app.post('/api/fileanalyse', upload.single('upfile'), function (req, res, next) {
-  // req.file is the `avatar` file
+  // req.file is the `upfile` file
   // req.body will hold the text fields, if there were any
   const file = req.file
   if (!file) {
@@ -28,17 +28,10 @@ app.post('/api/fileanalyse', upload.single('upfile'), function (req, res, next) 
     error.httpStatusCode = 400
     return next(error)
   }
-   // res.send(file)
-  console.log(req.file)
   res.send({name:req.file.originalname,type:req.file. mimetype,size:req.file.size})
  
 })
  
-
-app.get('/hello', function(req, res){
-  res.json({greetings: "Hello, API"});
-});
-
 app.listen(process.env.PORT || 3000, function () {
   console.log('Node.js listening ...');
 });
