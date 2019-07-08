@@ -5,7 +5,7 @@ var cors = require('cors');
 const bodyParser= require('body-parser')
 let multer = require('multer');
 
-var upload = multer({ dest: './assets/' })
+var upload = multer({ dest: 'assets/' })
 
 
 var app = express();
